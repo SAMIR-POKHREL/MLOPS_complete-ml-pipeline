@@ -1,0 +1,4 @@
+1.create a github repo and clone it local(add experiments)
+2.add src folder along with all components (run them indidividually)
+3.add data ,module ,reports directoriess to .gitignore file
+4.now git add , commit , push
