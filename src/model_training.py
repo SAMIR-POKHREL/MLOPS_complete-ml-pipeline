@@ -4,7 +4,7 @@ import pandas as pd
 import pickle 
 import logging
 from sklearn.ensemble import RandomForestClassifier
-
+import yaml
 
 # making sure logging folder exists
 dir_path='logs'
@@ -38,6 +38,26 @@ logger.addHandler(console_handler)
 logger.addHandler(file_handler)
 
 
+def load_params(file_path:str) ->dict:
+      """
+      load parameters from a yaml file.
+
+      
+      """
+      try:
+            with open(file_path,'r') as f:
+                  params=yaml.safe_load(f)
+            logger.debug("parameters loaded successfully from %s",file_path)
+            return params
+      except FileNotFoundError:
+            logger.error("File not found in %s",file_path)
+            raise
+      except yaml.YAMLError as e:
+            logger.error("yaml error : %s",e)
+            raise
+      except Exception as e:
+            logger.error("unexpected error %s ",e)
+            raise
 
 def load_data(file_path:str)->pd.DataFrame:
     """
@@ -121,7 +141,7 @@ def save_model(model,file_path:str)-> None:
 
 def main():
     try:
-        params={'n_estimators':25,'random_state':2}
+        params=load_params(file_path='params.yaml')['model_training']
         train_data=load_data('./data/processed/train_tfidf.csv')
         X_train= train_data.iloc[:,:-1].values
         y_train= train_data.iloc[:,-1].values
