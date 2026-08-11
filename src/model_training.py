@@ -94,6 +94,8 @@ def train_model(X_train:np.ndarray,y_train:np.ndarray,params:dict) ->RandomFores
 
 
 
+
+
 def save_model(model,file_path:str)-> None:
     """
     save the trained model to a file

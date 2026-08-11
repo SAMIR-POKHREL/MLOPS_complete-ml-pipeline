@@ -2,3 +2,8 @@
 2.add src folder along with all components (run them indidividually)
 3.add data ,module ,reports directoriess to .gitignore file
 4.now git add , commit , push
+
+# setting up dvc pipeline (without params)
+5> create a dvc.yaml file and add stages to it
+6 > dvc init then do "dvc repro" to test the pipeline automation .(check dvc  dag)  # dvc tag shows everthing in graph
+7 >now git add , commit ,push

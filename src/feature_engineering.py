@@ -15,7 +15,7 @@ logger.setLevel('DEBUG')
 
 
 # console handler
-console_handler=logging.StreamHandler()J
+console_handler=logging.StreamHandler()
 console_handler.setLevel('DEBUG')
 
 # setting path for filehandler
